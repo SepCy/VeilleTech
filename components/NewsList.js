@@ -1,19 +1,13 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, ScrollView } from 'react-native'
 
 import News from './New'
 
 const NewsList = () => {
     return (
-        <View style = {styles.container}>
+        <ScrollView style = {styles.container}>
             <News />
-            <News />
-            <News />
-            <News />
-            <News />
-            <News />
-            <News />
-        </View>
+        </ScrollView>
     )
 }
 
