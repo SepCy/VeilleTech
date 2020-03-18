@@ -14,8 +14,8 @@ const NewsList = () => {
 
 const styles = StyleSheet.create({
     container: {
-       paddingHorizontal: 15,
-       paddingVertical: 5
+       paddingHorizontal: 8,
+       paddingVertical: 8
     }
 })
 
