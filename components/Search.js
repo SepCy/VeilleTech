@@ -32,7 +32,7 @@ class Search extends React.Component {
             <ThemeProvider theme={theme}>
                 <View style={styles.SearchBar}>
                     <SearchBar
-                        placeholder="Type Here..."
+                        placeholder="Rechercher..."
                         onChangeText={this.updateSearch}
                         value={search}
                         round

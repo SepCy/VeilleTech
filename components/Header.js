@@ -1,24 +1,30 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text,Image } from 'react-native'
 
 import Search from './Search'
 
 
-const Header = () => {
-    return (
-        <View style={styles.mainHeader}>
-            <View style={styles.logoSearch}>
-                <Text style={styles.logo}>Logo</Text>
-                <Search />
+class Header extends React.Component {
+    constructor(props){
+        super(props)
+    }
+    render() {
+        return (
+            <View style={styles.mainHeader}>
+                <View style={styles.logoSearch}>
+                    <Image source={require('../assets/logo.png')} style={styles.logo}/>
+                    <Search />
+                </View>
             </View>
-        </View>
-    )
+        )
+    }
+
 }
 
 
 const styles = StyleSheet.create({
     logoSearch: {
-        marginTop: 31,
+        marginTop: 30,
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-between',
@@ -26,13 +32,16 @@ const styles = StyleSheet.create({
     }
     ,
     logo: {
+        width:50,
+        height:50
 
     },
 
     mainHeader: {
-        height: 80,
+        justifyContent:"center",
+        height: 95,
         paddingHorizontal: 15,
-        backgroundColor: 'blue'
+        backgroundColor: '#427bbc'
     }
 })
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, StyleSheet, Text, ScrollView,TouchableOpacity, Linking } from 'react-native'
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity, Linking, Image } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 import * as rssParser from 'react-native-rss-parser';
 // https://fs.univ-ndere.cm/?feed=comments-rss2
 //http://www.univ-ndere.cm/?feed=rss2
@@ -93,7 +93,7 @@ export default class NewsList extends React.Component {
         }
 
         return (
-            <View>
+            <View style={{ marginBottom: 100, justifyContent: "center", flexDirection: 'row' }}>
                 <ScrollView style={styles.container}>
                     {
                         data.map((item, key) => {
@@ -101,9 +101,9 @@ export default class NewsList extends React.Component {
                                 <View style={styles.card} key={key}>
                                     <Text style={styles.textTitle}>{item[0]}</Text>
                                     <Text style={styles.textDescription}>{item[1]}</Text>
-                                    <Text style={styles.textPublished}>{item[2]}</Text>
+                                    <Text style={styles.textPublished}>{item[2].slice(0, 22)}</Text>
                                     <Text style={styles.textUrl}
-                                    onPress={() => Linking.openURL(`${item[3]}`)}
+                                        onPress={() => Linking.openURL(`${item[3]}`)}
                                     >Visiter</Text>
                                 </View>
                             )
@@ -113,24 +113,23 @@ export default class NewsList extends React.Component {
                 </ScrollView >
                 <TouchableOpacity onPress={() => { this.GetRssFeed() }}
                     style={{
-                        borderWidth: 1,
-                        borderColor: 'rgba(0,255,0,0.2)',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        width: 80,
+                        width: 60,
                         position: 'absolute',
-                        height: 80,
-                        backgroundColor: 'blue',
+                        height: 60,
+                        backgroundColor: '#427bbc',
                         borderRadius: 100,
                         zIndex: 10,
-                        right: 20,
-                        bottom: 100,
-                        shadowColor: 'rgba(0,255,0,0.2)',
+                        shadowColor: '#427bbc',
                         shadowOpacity: 0.9,
                         elevation: 10,
+                        display: "flex",
+                        bottom: 20
                     }}
                 >
-                </TouchableOpacity>
+                     <Image source={require('../assets/refresh.png')} style={styles.refresh}/>
+                </TouchableOpacity>     
             </View>
         )
     }
@@ -146,9 +145,9 @@ const styles = StyleSheet.create({
     },
     card: {
         backgroundColor: 'white',
-        marginVertical: 3,
+        marginVertical: 5,
         padding: 15,
-        borderRadius: 2
+        borderRadius: 5
 
     },
     textTitle: {
@@ -166,7 +165,7 @@ const styles = StyleSheet.create({
         opacity: .7
     },
     textUrl: {
-        color: 'blue',
+        color: '#427bbc',
         marginVertical: 3,
         paddingRight: 10,
         marginLeft: 'auto',
@@ -176,6 +175,8 @@ const styles = StyleSheet.create({
     spinnerTextStyle: {
         color: '#FFF',
     },
+    refresh: {
+    }
 
 
 
